@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hands for Palestine: Supporting Palestinian Rights">
+    <meta name="author" content="Hands for Palestine">
+    <title>Hands for Palestine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+			background-color: lightyellow;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 50px;
+            padding: 10px;
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+		
+		h2 {
+			font-size: 30px;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 500px; /* Set a fixed height for consistency */
+            overflow: hidden;
+            margin: auto;
+            border: 1px solid;
+        }
+
+        .slides {
+            display: flex;
+            width: 300%; /* Adjusted based on the number of slides */
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            display: flex; /* Use flexbox for side-by-side layout */
+            width: 100%;
+            height: 100%; /* Fixed height for slides */
+            flex: 0 0 100%;
+        }
+
+        .slide img {
+            width: 500px; /* Take up 50% of the slide's width */
+            height: 500px; /* Maintain aspect ratio */
+            object-fit: cover; /* Ensures image covers the area properly */
+        }
+
+        .slide p {
+            width: 500px; /* Text takes 50% of slide */
+            padding: 50px;
+			margin-top: 50px;
+            font-size: 20px;
+            line-height: 1.5;
+            text-align: left;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow: visible;
+        }
+
+        .dots-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background 0.5s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #333;
+        }
+        
+        .events-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .events {
+            width: 500px;
+            display: flex;
+            gap: 400px;
+        }
+        .event {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid;
+        }
+        .event img {
+            width: 200px;
+            height: 200px;
+            margin-right: 10px;
+        }
+        .details {
+            flex-grow: 1;
+        }
+        .view-all {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .article {
+            font-size: 20px;
+            font-family: sans-serif;
+            margin-top: 35px;
+            padding: 10px;
+            width: 60%; /* Adjusted width for article */
+        }
+        .article-title {
+            font-size: 40px;
+            margin-top: 50px;
+        }
+        .article p {
+            font-size: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+        .article h3 {
+            font-size: 25px;
+            text-align: left;
+            padding: 10px;
+        }
+        .article h4 {
+            font-size: 25px;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        #newsletter {
+            scroll-margin-top: 100px; /* Adjust according to header height */
+        }
+
+        .newsletter-container {
+            background: white;
+            padding: 20px;
+            border: 1px solid;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Adjusted width for newsletter */
+            height: 500px;
+            text-align: center;
+			margin-top: 150px;
+        }
+
+        .newsletter-container h2 {
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
+        .newsletter-container p {
+            font-size: 20px;
+            color: #555;
+        }
+
+        .newsletter-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .newsletter-container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #008000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .newsletter-container button:hover {
+            background-color: #006400;
+        }
+
+        .contact-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            width: 300px; /* Adjusted width for contact */
+            height: 500px;
+            border: 1px solid;
+			margin-top: 200px;
+        }
+
+        .contact-container h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .contact-container form {
+            display: flex;
+			flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-container input, .contact-container textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-container button {
+            width: 80%;
+            padding: 10px;
+            background-color: #008000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .contact-container button:hover {
+            background-color: #006400;
+        }
+
+        /* Flexbox layout for article, newsletter, and contact */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .main-content .article {
+            flex: 1 1 60%; /* Article takes 60% of the width */
+            margin-right: 20px; /* Space between article and newsletter/contact */
+        }
+
+        .main-content .newsletter-container,
+        .main-content .contact-container {
+            flex: 1 1 30%; /* Newsletter and contact take 30% of the width */
+            margin-bottom: 20px; /* Space between newsletter and contact */
+			flex-direction: column;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .main-content .article,
+            .main-content .newsletter-container,
+            .main-content .contact-container {
+                flex: 1 1 100%; /* Full width on smaller screens */
+                margin-right: 0;
+            }
+        }
+		footer {
+    background-color: #003366;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons img {
+    width: 30px;
+    margin: 5px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding: 10px 0;
+    background: #002244;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="logo-placeholder.png" alt="Logo" class="logo"> <!-- Add your logo path -->
+                <div class="header-title">Hands for Palestine</div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#involved">Get Involved</a></li>
+            <li><a href="#campaigns">Campaigns</a></li>
+            <li><a href="C:\xampp\htdocs\HTML_Event\event.html">Event</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="home" class="background">
+            <h2>Welcome to Hands for Palestine</h2>
+            <div class="slider-container">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="https://tse2.mm.bing.net/th?id=OIP.FMGq0RYBTJdimedjBx5x0wHaEj&w=291&h=291&c=7" alt="Slide 1">
+                        <p>Urgent evacuation of Palestinian premature babies from Al-Aqsa Hospital to Nasser Hospital in Khan Younis following Israeli evacuation orders. The scene captures the vulnerability of these newborns, many of whom rely on incubators and medical support to survive. Due to the ongoing conflict, hospitals in Gaza have struggled with power shortages, limited medical supplies, and the destruction of healthcare infrastructure, putting the lives of these fragile infants at severe risk.</p>
+						<img src="https://tse1.mm.bing.net/th?id=OIP.6TTWiMkpU6dJEh0NvIWThwHaE7&w=315&h=315&c=7" alt="Second image">
+					</div>
+                    <div class="slide">
+                        <img src="https://tse4.mm.bing.net/th?id=OIP.jbkd__01LvvRIK35ArugkQHaE8&w=316&h=316&c=7" alt="Slide 2">
+                        <p>An Israeli delegation has arrived in Qatar for indirect ceasefire talks with Hamas, following Israel's withdrawal from the Netzarim Corridor in Gaza. This strategic move has reconnected the northern and southern regions of Gaza, facilitating movement for residents. The discussions in Qatar aim to extend the fragile truce and address the administration of post-war Gaza. </p>
+						<img src="https://tse2.mm.bing.net/th?id=OIP.4BLzUxnKRa8RDOti-6A9fwHaE8&w=316&h=316&c=7" alt="Second image">
+					</div>
+                    <div class="slide">
+                        <img src="https://tse1.mm.bing.net/th?id=OIP.60QG9H82xUxPM0iBTaKD2gHaEK&w=266&h=266&c=7" alt="Slide 3">
+                        <p>The return of Palestinian civilians to northern Gaza following the ceasefire agreement that facilitated their movement. Many families had been displaced due to the ongoing conflict, and this moment marks a significant development in the humanitarian situation. The scene captures individuals carrying their belongings, walking through damaged areas, and attempting to rebuild their lives amidst the ruins.</p>
+						<img src="https://tse1.mm.bing.net/th?id=OIP.xmIsaOD_gwPHBUTeXu0pSgHaE7&w=315&h=315&c=7" alt="Second image">
+					</div>
+                </div>
+            </div>
+
+            <div class="dots-container">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
+			<div>
+        </section>
+
+        <div class="main-content">
+            <div class="article">
+                <div class="article-title">Hands for Palestine: Empowering Communities Through Compassionate Action</div>
+                <p>At Hands for Palestine, our unwavering commitment is to uplift and support Palestinian communities by providing essential resources and fostering sustainable development. We believe that every individual deserves access to basic necessities and opportunities for a dignified life.</p>
+                <h3>Our Mission</h3>
+                <h4>We are dedicated to assisting those in need by ensuring they have access to:</h4>
+                <p>Clean Water: Implementing projects like building water wells to provide safe drinking water to communities.</p>
+                <p>Education: Supporting educational initiatives that empower individuals with knowledge and skills.</p>
+                <p>Food and Shelter: Providing food baskets and housing solutions to families facing hardships.</p>
+                <p>Healthcare: Offering medical assistance and healthcare services to improve community well-being.</p>
+            </div>
+
+            <div class="newsletter-container">
+                <h2>Newsletter</h2>
+                <p>Sign up to receive updates on our mission and events.</p>
+                <form id="newsletterForm">
+                    <input type="text" id="first_name" name="first_name" placeholder="First Name *" required>
+                    <input type="text" id="last_name" name="last_name" placeholder="Last Name *" required>
+                    <input type="email" id="email" name="email" placeholder="Email *" required>
+                    <button type="submit">SIGN UP</button>
+                </form>
+                <p id="message"></p>
+            </div>
+
+            <div class="contact-container">
+                <h2>Contact Us</h2>
+                <form>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            const slider = document.querySelector('.slides');
+            slider.style.transform = `translateX(-${index * 100}%)`;
+
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides; // Cycle through slides
+            showSlide(currentIndex);
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            showSlide(index);
+        }
+
+        setInterval(nextSlide, 3000); // Auto-scroll every 3 seconds
+        
+        document.getElementById("newsletterForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Newsletter Subscription Successful!");
+        });
+    </script>
+	<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>Hands for Palestine is dedicated to supporting Palestinian communities through advocacy, education, and humanitarian aid.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#campaigns">Campaigns</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@handsforpalestine.org">info@handsforpalestine.org</a></p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Freedom Street, Palestine</p>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+                <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Hands for Palestine. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- Link to external CSS -->
+<link rel="stylesheet" href="footer.css">
+
+</body>
+</html>
